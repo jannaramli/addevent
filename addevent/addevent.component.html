@@ -1,0 +1,34 @@
+<br><br>
+<div class="hantarEmail">
+    <h6>Date:</h6>
+    <div *ngFor="let dataUser of nameUser"> 
+        <h6>{{dataUser.name}}</h6> 
+    </div><br>  
+        <h6>Event:</h6>
+            <form [formGroup]="myEvent" #EventForm="ngForm">
+
+                <input type="text" id="event" name="event" formControlName="event" class="form-control" (change)="onEvent()" placeholder="THE EVENT">
+                        <div class="col">
+                            <div *ngIf="myEvent.get('event').invalid && (myEvent.get('event').dirty || myEvent.get('event').touched)">
+                                <div *ngIf="myEvent.get('event').errors?.required">
+                                <small>masukkan event</small>
+                                </div>
+                            </div>
+                        </div><br>
+
+                <!-- <label for="date" class="form-label">Tarikh event:</label>
+                    <input type="date" id="date" name="date" formControlName="date" autocomplete="off" class="form-control" (change)="onEvent()"  placeholder="">
+                            <div class="col">
+                                <div *ngIf="myEvent.get('date').invalid && (myEvent.get('date').dirty || myEvent.get('date').touched)">
+                                    <div *ngIf="myEvent.get('date').errors?.required">
+                                    <small>isi tarikh</small>
+                                    </div>
+                                </div>
+                            </div> -->
+            </form>
+            <br>
+
+            <div class="d-grid gap-1 d-md-flex justify-content-md-end">  
+                <button mat-raised-button color="primary" type="submit" value="submit" (click)="hantarEvent();" [disabled]="EventForm.invalid">Tambah event</button>
+            </div>
+</div>  

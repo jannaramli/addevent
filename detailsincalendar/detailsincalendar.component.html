@@ -1,0 +1,136 @@
+<!-- WISH AND EVENT FOR 1 USER -->
+<div *ngIf="displayDetail.length===1; else gotowish">  
+<br><br>
+    <div class="container-fluid">
+        <div class="row flex-nowrap">
+            <div class="col-xl-2">
+                <div class="px-3 text-black">
+                    <a class="text-black text-decoration-none">
+                    <span class="fs-5 d-none d-sm-inline">Menu</span>
+                    </a> <hr>
+                    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                        <li>
+                            <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+                                <li class="w-100">
+                                <button class="btn btn-link" type="submit" value="submit" (click)="keSendMail();">Hantar wish</button>
+                                </li>
+                                <li>
+                                    <button  class="btn btn-link"  type="submit" value="submit" (click)="keEvent();">Cipta event</button>
+                                </li><br>
+                            </ul>
+                        </li> 
+                    </ul>                
+                </div>
+            </div>
+        
+            <div class="hantarEmail">
+                <p>Selamat Hari Lahir! Best Wishes For You</p>
+                <div *ngFor="let dataUser of displayDetail">
+        
+                    <div class="details" *ngIf="dataUser.kad != 0">
+                        <p>{{dataUser.name}}</p>
+                        <p>{{dataUser.alamat}} {{dataUser.alamat2}} {{dataUser.bandar}} {{dataUser.poskod}} {{dataUser.negeri}}</p>
+                        <p>{{dataUser.dob}}</p>
+                        <p>{{dataUser.kad}}</p>
+                        <h6 *ngIf="dataUser.kad != 0">Alamat Email Penerima:</h6>
+                        <p>{{dataUser.email}}</p>
+                    </div><br>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- WISH FOR MULTIPLE USER -->
+<ng-template #gotowish>
+    <div *ngIf="displayDetail.length>0;  else gotoevent">  
+    <br><br>
+        <div class="container-fluid">
+            <div class="row flex-nowrap">
+                <div class="col-xl-2">
+                    <div class="px-3 text-black">
+                        <a class="text-black text-decoration-none">
+                            <span class="fs-5 d-none d-sm-inline">Menu</span>
+                        </a> <hr>
+                            <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                                <li>
+                                    <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+                                        <li class="w-100">
+                                        <button class="btn btn-link" type="submit" value="submit" (click)="keSendMail();">Hantar wish</button>
+                                        </li>
+                                        <li>
+                                            <button  class="btn btn-link"  type="submit" value="submit" (click)="keEvent();">Cipta event</button>
+                                        </li><br>
+                                    </ul>
+                                </li> 
+                            </ul>                
+                    </div>
+                </div>
+        
+                <div class="hantarEmail">
+                    <p>Selamat Hari Lahir! Best Wishes For You 🎁</p>
+                    <div *ngFor="let dataUser of displayDetail">
+        
+                        <div class="details" *ngIf="dataUser.kad != 0">
+                            <p>{{dataUser.name}}</p>
+                            <p>{{dataUser.alamat}} {{dataUser.alamat2}} {{dataUser.bandar}} {{dataUser.poskod}} {{dataUser.negeri}}</p>
+                            <p>{{dataUser.dob}}</p>
+                            <p>{{dataUser.kad}}</p>
+                            <h6 *ngIf="dataUser.kad != 0">Alamat Email Penerima:</h6>
+                            <p>{{dataUser.email}}</p>
+                        </div><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<!--FOR EVENT IN CALENDAR or FOR NON USER-->
+<ng-template #gotoevent>
+    <br><br>
+    <div class="container-fluid">
+        <div class="row flex-nowrap">
+            <div class="col-xl-2">
+                <div class="px-3 text-black">
+                    <a class="text-black text-decoration-none">
+                        <span class="fs-5 d-none d-sm-inline">Menu</span>
+                    </a> <hr>
+                        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                            <li>
+                                <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+                                    <li>
+                                        <button  class="btn btn-link"  type="submit" value="submit" (click)="keEvent();">Cipta event</button>
+                                    </li><br>
+                                </ul>
+                            </li> 
+                        </ul>                
+                </div>
+            </div>
+        
+            <div class="hantarEmail">
+                <p class="text-center">opps! No birthday🤭</p>
+        
+                    <!-- <div *ngFor="let dataUser of displayDetail">
+                        <div class="details" *ngIf="dataUser.kad == 0;">
+                            <p>Event hari ini 📅: :</p>
+                            <p>{{dataUser.name}}</p>
+                            <br><br>
+                        </div>
+                    </div> -->
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<!--FOR NON USER -->
+<!-- <ng-template #gotonoevent>
+    <br><br><br>
+    <div class="hantarEmail">
+        <p>opps! no birthday today 😓</p>
+    </div>
+</ng-template> -->
+
+
+
+
